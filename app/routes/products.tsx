@@ -8,6 +8,20 @@ import {
 } from "@heroicons/react/20/solid";
 import { cn } from "~/lib/utils";
 
+import Button from "../components/Button";
+import Card from "../components/Card";
+import CardContainer from "~/components/products/CardContainer";
+import Img from "~/components/products/Img";
+import Paragraph from "~/components/Paragraph";
+import ButtonLink from "~/components/ButtonLink";
+import Form from "~/components/Form";
+import HeaderMain from "~/components/HeaderMain";
+import HeaderSection from "~/components/HeaderSection";
+import HeaderSubsection from "~/components/HeaderSubsection";
+import HeaderDetail from "~/components/HeaderDetail";
+import Section from "~/components/Section";
+
+
 const product = {
   name: "Everyday Ruck Snack",
   href: "#",
@@ -120,23 +134,27 @@ export default function Example() {
               </nav>
 
               <div className="mt-4">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <HeaderMain className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                   {product.name}
-                </h1>
+                </HeaderMain>
               </div>
 
-              <section aria-labelledby="information-heading" className="mt-4">
-                <h2 id="information-heading" className="sr-only">
+              <Section ariaLabelledby="information-heading" className="mt-4">
+                <HeaderSection id="information-heading" className="sr-only">
                   Product information
-                </h2>
+                </HeaderSection>
 
                 <div className="flex items-center">
-                  <p className="text-lg text-gray-900 sm:text-xl">
+                  <Paragraph
+                    className="text-lg text-gray-900 sm:text-xl"
+                  >
                     {product.price}
-                  </p>
+                  </Paragraph>
 
                   <div className="ml-4 border-l border-gray-300 pl-4">
-                    <h2 className="sr-only">Reviews</h2>
+                    <HeaderSection className="sr-only">
+                      Reviews
+                    </HeaderSection>
                     <div className="flex items-center">
                       <div>
                         <div className="flex items-center">
@@ -153,21 +171,24 @@ export default function Example() {
                             />
                           ))}
                         </div>
-                        <p className="sr-only">
+                        <Paragraph
+                          className="sr-only"
+                        >
                           {reviews.average} out of 5 stars
-                        </p>
+                        </Paragraph>
                       </div>
-                      <p className="ml-2 text-sm text-gray-500">
+                      <Paragraph className="ml-2 text-sm text-gray-500">
                         {reviews.totalCount} reviews
-                      </p>
+                      </Paragraph>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-base text-gray-500">
+
+                  <Paragraph className="text-base text-gray-500">
                     {product.description}
-                  </p>
+                  </Paragraph>
                 </div>
 
                 <div className="mt-6 flex items-center">
@@ -175,19 +196,19 @@ export default function Example() {
                     className="h-5 w-5 flex-shrink-0 text-green-500"
                     aria-hidden="true"
                   />
-                  <p className="ml-2 text-sm text-gray-500">
+                  <Paragraph className="ml-2 text-sm text-gray-500">
                     In stock and ready to ship
-                  </p>
+                  </Paragraph>
                 </div>
-              </section>
+              </Section>
             </div>
 
             {/* Product image */}
             <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
-                <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
+                <Img
+                  imgUrl={product.imageSrc}
+                  alternativeText={product.imageAlt}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
@@ -195,14 +216,17 @@ export default function Example() {
 
             {/* Product form */}
             <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
-              <section aria-labelledby="options-heading">
-                <h2 id="options-heading" className="sr-only">
+              <Section ariaLabelledby="options-heading">
+                <HeaderSection id="options-heading" className="sr-only">
                   Product options
-                </h2>
+                </HeaderSection>
 
-                <form>
+                <Form>
                   <div className="sm:flex sm:justify-between">
                     {/* Size selector */}
+                    <RadioGroup>
+                      
+                    </RadioGroup>
                     <RadioGroup value={selectedSize} onChange={setSelectedSize}>
                       <RadioGroup.Label className="block text-sm font-medium text-gray-700">
                         Size
@@ -252,8 +276,8 @@ export default function Example() {
                     </RadioGroup>
                   </div>
                   <div className="mt-4">
-                    <a
-                      href="#"
+                    <ButtonLink
+                      to="#"
                       className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                     >
                       <span>What size should I buy?</span>
@@ -261,19 +285,18 @@ export default function Example() {
                         className="ml-2 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
-                    </a>
+                    </ButtonLink>
                   </div>
                   <div className="mt-10">
-                    <button
+                    <Button
                       type="submit"
                       className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-                    >
-                      Add to bag
-                    </button>
+                      text="Add to bag madafakas"
+                    />
                   </div>
                   <div className="mt-6 text-center">
-                    <a
-                      href="#"
+                    <ButtonLink
+                      to="#"
                       className="group inline-flex text-base font-medium"
                     >
                       <ShieldCheckIcon
@@ -283,94 +306,99 @@ export default function Example() {
                       <span className="text-gray-500 hover:text-gray-700">
                         Lifetime Guarantee
                       </span>
-                    </a>
+                    </ButtonLink>
                   </div>
-                </form>
-              </section>
+                </Form>
+              </Section>
             </div>
           </div>
         </div>
 
         <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
           {/* Details section */}
-          <section aria-labelledby="details-heading">
+          <Section ariaLabelledby="details-heading">
             <div className="flex flex-col items-center text-center">
-              <h2
+              <HeaderSection
                 id="details-heading"
                 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
               >
                 The Fine Details
-              </h2>
-              <p className="mt-3 max-w-3xl text-lg text-gray-600">
+              </HeaderSection>
+
+              <Paragraph className="mt-3 max-w-3xl text-lg text-gray-600">
                 Our patented padded snack sleeve construction protects your
                 favorite treats from getting smooshed during all-day adventures,
                 long shifts at work, and tough travel schedules.
-              </p>
+              </Paragraph>
             </div>
 
             <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
-              <div>
-                <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
-                    alt="Drawstring top with elastic loop closure and textured interior padding."
+              <Card>
+                <CardContainer className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
+                  <Img
+                    imgUrl="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
+                    alternativeText="Drawstring top with elastic loop closure and textured interior padding."
                     className="h-full w-full object-cover object-center"
                   />
-                </div>
-                <p className="mt-8 text-base text-gray-500">
+                </CardContainer>
+                <Paragraph className="mt-8 text-base text-gray-500">
                   The 20L model has enough space for 370 candy bars, 6 cylinders
                   of chips, 1,220 standard gumballs, or any combination of
                   on-the-go treats that your heart desires. Yes, we did the
                   math.
-                </p>
-              </div>
-              <div>
-                <div className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-02.jpg"
-                    alt="Front zipper pouch with included key ring."
+                </Paragraph>
+              </Card>
+              <Card>
+                <CardContainer className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
+                  <Img
+                    imgUrl="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-02.jpg"
+                    alternativeText="Front zipper pouch with included key ring."
                     className="h-full w-full object-cover object-center"
                   />
-                </div>
-                <p className="mt-8 text-base text-gray-500">
+                </CardContainer>
+                <Paragraph className="mt-8 text-base text-gray-500">
                   Up your snack organization game with multiple compartment
                   options. The quick-access stash pouch is ready for even the
                   most unexpected snack attacks and sharing needs.
-                </p>
-              </div>
+                </Paragraph>
+              </Card>
             </div>
-          </section>
+          </Section>
 
           {/* Policies section */}
-          <section aria-labelledby="policy-heading" className="mt-16 lg:mt-24">
-            <h2 id="policy-heading" className="sr-only">
+          <Section ariaLabelledby="policy-heading" className="mt-16 lg:mt-24">
+            <HeaderSection id="policy-heading" className="sr-only">
               Our policies
-            </h2>
+            </HeaderSection>
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
               {policies.map((policy) => (
                 <div key={policy.name}>
-                  <img src={policy.imageSrc} alt="" className="h-24 w-auto" />
-                  <h3 className="mt-6 text-base font-medium text-gray-900">
+                  <Img 
+                    imgUrl={policy.imageSrc} 
+                    alternativeText="" 
+                    className="h-24 w-auto" 
+                  />
+                  <HeaderSubsection className="mt-6 text-base font-medium text-gray-900">
                     {policy.name}
-                  </h3>
-                  <p className="mt-3 text-base text-gray-500">
+                  </HeaderSubsection>
+                  <Paragraph className="mt-3 text-base text-gray-500">
                     {policy.description}
-                  </p>
+                  </Paragraph>
                 </div>
               ))}
             </div>
-          </section>
+          </Section>
         </div>
 
-        <section aria-labelledby="reviews-heading" className="bg-white">
+        <Section ariaLabelledby="reviews-heading" className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
             <div className="lg:col-span-4">
-              <h2
+              <HeaderSection
                 id="reviews-heading"
                 className="text-2xl font-bold tracking-tight text-gray-900"
               >
                 Customer Reviews
-              </h2>
+              </HeaderSection>
 
               <div className="mt-3 flex items-center">
                 <div>
@@ -388,15 +416,19 @@ export default function Example() {
                       />
                     ))}
                   </div>
-                  <p className="sr-only">{reviews.average} out of 5 stars</p>
+                  <Paragraph className="sr-only">
+                    {reviews.average} out of 5 stars
+                  </Paragraph>
                 </div>
-                <p className="ml-2 text-sm text-gray-900">
+                <Paragraph className="ml-2 text-sm text-gray-900">
                   Based on {reviews.totalCount} reviews
-                </p>
+                </Paragraph>
               </div>
 
               <div className="mt-6">
-                <h3 className="sr-only">Review data</h3>
+                <HeaderSubsection className="sr-only">
+                  Review data
+                </HeaderSubsection>
 
                 <dl className="space-y-3">
                   {reviews.counts.map((count) => (
@@ -405,10 +437,10 @@ export default function Example() {
                       className="flex items-center text-sm"
                     >
                       <dt className="flex flex-1 items-center">
-                        <p className="w-3 font-medium text-gray-900">
+                        <Paragraph className="w-3 font-medium text-gray-900">
                           {count.rating}
                           <span className="sr-only"> star reviews</span>
-                        </p>
+                        </Paragraph>
                         <div
                           aria-hidden="true"
                           className="ml-1 flex flex-1 items-center"
@@ -445,40 +477,42 @@ export default function Example() {
               </div>
 
               <div className="mt-10">
-                <h3 className="text-lg font-medium text-gray-900">
+                <HeaderSubsection className="text-lg font-medium text-gray-900">
                   Share your thoughts
-                </h3>
-                <p className="mt-1 text-sm text-gray-600">
+                </HeaderSubsection>
+                <Paragraph className="mt-1 text-sm text-gray-600">
                   If you’ve used this product, share your thoughts with other
                   customers
-                </p>
+                </Paragraph>
 
-                <a
-                  href="#"
+                <ButtonLink
+                  to="#"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 sm:w-auto lg:w-full"
                 >
                   Write a review
-                </a>
+                </ButtonLink>
               </div>
             </div>
 
             <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
-              <h3 className="sr-only">Recent reviews</h3>
+              <HeaderSubsection className="sr-only">
+                Recent reviews
+              </HeaderSubsection>
 
               <div className="flow-root">
                 <div className="-my-12 divide-y divide-gray-200">
                   {reviews.featured.map((review) => (
                     <div key={review.id} className="py-12">
                       <div className="flex items-center">
-                        <img
-                          src={review.avatarSrc}
-                          alt={`${review.author}.`}
+                        <Img
+                          imgUrl={review.avatarSrc}
+                          alternativeText={`${review.author}.`}
                           className="h-12 w-12 rounded-full"
                         />
                         <div className="ml-4">
-                          <h4 className="text-sm font-bold text-gray-900">
+                          <HeaderDetail className="text-sm font-bold text-gray-900">
                             {review.author}
-                          </h4>
+                          </HeaderDetail>
                           <div className="mt-1 flex items-center">
                             {[0, 1, 2, 3, 4].map((rating) => (
                               <StarIcon
@@ -493,9 +527,9 @@ export default function Example() {
                               />
                             ))}
                           </div>
-                          <p className="sr-only">
+                          <Paragraph className="sr-only">
                             {review.rating} out of 5 stars
-                          </p>
+                          </Paragraph>
                         </div>
                       </div>
 
@@ -509,7 +543,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
     </div>
   );
