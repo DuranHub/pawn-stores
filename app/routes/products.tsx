@@ -11,8 +11,7 @@ import { cn } from "~/lib/utils";
 import Button from "../components/Button";
 import CardContainer from "~/components/products/CardContainer";
 import Img from "~/components/products/Img";
-import { Link } from "@remix-run/react";
-import Form from "~/components/Form";
+import { Link, Form } from "@remix-run/react";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 
