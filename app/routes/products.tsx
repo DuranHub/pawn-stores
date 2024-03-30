@@ -9,17 +9,13 @@ import {
 import { cn } from "~/lib/utils";
 
 import Button from "../components/Button";
-import Card from "../components/Card";
 import CardContainer from "~/components/products/CardContainer";
 import Img from "~/components/products/Img";
-import Paragraph from "~/components/Paragraph";
 import ButtonLink from "~/components/ButtonLink";
 import Form from "~/components/Form";
-import HeaderMain from "~/components/HeaderMain";
-import HeaderSection from "~/components/HeaderSection";
-import HeaderSubsection from "~/components/HeaderSubsection";
-import HeaderDetail from "~/components/HeaderDetail";
+import Heading from "~/components/Heading";
 import Section from "~/components/Section";
+
 
 
 const product = {
@@ -134,27 +130,27 @@ export default function Example() {
               </nav>
 
               <div className="mt-4">
-                <HeaderMain className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <Heading level="h1" className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                   {product.name}
-                </HeaderMain>
+                </Heading>
               </div>
 
               <Section ariaLabelledby="information-heading" className="mt-4">
-                <HeaderSection id="information-heading" className="sr-only">
+                <Heading level="h2" id="information-heading" className="sr-only">
                   Product information
-                </HeaderSection>
+                </Heading>
 
                 <div className="flex items-center">
-                  <Paragraph
+                  <p
                     className="text-lg text-gray-900 sm:text-xl"
                   >
                     {product.price}
-                  </Paragraph>
+                  </p>
 
                   <div className="ml-4 border-l border-gray-300 pl-4">
-                    <HeaderSection className="sr-only">
+                    <Heading level="h2" className="sr-only">
                       Reviews
-                    </HeaderSection>
+                    </Heading>
                     <div className="flex items-center">
                       <div>
                         <div className="flex items-center">
@@ -171,24 +167,24 @@ export default function Example() {
                             />
                           ))}
                         </div>
-                        <Paragraph
+                        <p
                           className="sr-only"
                         >
                           {reviews.average} out of 5 stars
-                        </Paragraph>
+                        </p>
                       </div>
-                      <Paragraph className="ml-2 text-sm text-gray-500">
+                      <p className="ml-2 text-sm text-gray-500">
                         {reviews.totalCount} reviews
-                      </Paragraph>
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-4 space-y-6">
 
-                  <Paragraph className="text-base text-gray-500">
+                  <p className="text-base text-gray-500">
                     {product.description}
-                  </Paragraph>
+                  </p>
                 </div>
 
                 <div className="mt-6 flex items-center">
@@ -196,9 +192,9 @@ export default function Example() {
                     className="h-5 w-5 flex-shrink-0 text-green-500"
                     aria-hidden="true"
                   />
-                  <Paragraph className="ml-2 text-sm text-gray-500">
+                  <p className="ml-2 text-sm text-gray-500">
                     In stock and ready to ship
-                  </Paragraph>
+                  </p>
                 </div>
               </Section>
             </div>
@@ -217,16 +213,13 @@ export default function Example() {
             {/* Product form */}
             <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
               <Section ariaLabelledby="options-heading">
-                <HeaderSection id="options-heading" className="sr-only">
+                <Heading level="h2" id="options-heading" className="sr-only">
                   Product options
-                </HeaderSection>
+                </Heading>
 
                 <Form>
                   <div className="sm:flex sm:justify-between">
                     {/* Size selector */}
-                    <RadioGroup>
-                      
-                    </RadioGroup>
                     <RadioGroup value={selectedSize} onChange={setSelectedSize}>
                       <RadioGroup.Label className="block text-sm font-medium text-gray-700">
                         Size
@@ -318,22 +311,23 @@ export default function Example() {
           {/* Details section */}
           <Section ariaLabelledby="details-heading">
             <div className="flex flex-col items-center text-center">
-              <HeaderSection
+              <Heading
+                level="h2"
                 id="details-heading"
                 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
               >
                 The Fine Details
-              </HeaderSection>
+              </Heading>
 
-              <Paragraph className="mt-3 max-w-3xl text-lg text-gray-600">
+              <p className="mt-3 max-w-3xl text-lg text-gray-600">
                 Our patented padded snack sleeve construction protects your
                 favorite treats from getting smooshed during all-day adventures,
                 long shifts at work, and tough travel schedules.
-              </Paragraph>
+              </p>
             </div>
 
             <div className="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8">
-              <Card>
+              <div>
                 <CardContainer className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
                   <Img
                     imgUrl="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
@@ -341,14 +335,14 @@ export default function Example() {
                     className="h-full w-full object-cover object-center"
                   />
                 </CardContainer>
-                <Paragraph className="mt-8 text-base text-gray-500">
+                <p className="mt-8 text-base text-gray-500">
                   The 20L model has enough space for 370 candy bars, 6 cylinders
                   of chips, 1,220 standard gumballs, or any combination of
                   on-the-go treats that your heart desires. Yes, we did the
                   math.
-                </Paragraph>
-              </Card>
-              <Card>
+                </p>
+              </div>
+              <div>
                 <CardContainer className="aspect-h-2 aspect-w-3 w-full overflow-hidden rounded-lg">
                   <Img
                     imgUrl="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-02.jpg"
@@ -356,20 +350,20 @@ export default function Example() {
                     className="h-full w-full object-cover object-center"
                   />
                 </CardContainer>
-                <Paragraph className="mt-8 text-base text-gray-500">
+                <p className="mt-8 text-base text-gray-500">
                   Up your snack organization game with multiple compartment
                   options. The quick-access stash pouch is ready for even the
                   most unexpected snack attacks and sharing needs.
-                </Paragraph>
-              </Card>
+                </p>
+              </div>
             </div>
           </Section>
 
           {/* Policies section */}
           <Section ariaLabelledby="policy-heading" className="mt-16 lg:mt-24">
-            <HeaderSection id="policy-heading" className="sr-only">
+            <Heading level="h2" id="policy-heading" className="sr-only">
               Our policies
-            </HeaderSection>
+            </Heading>
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
               {policies.map((policy) => (
                 <div key={policy.name}>
@@ -378,12 +372,12 @@ export default function Example() {
                     alternativeText="" 
                     className="h-24 w-auto" 
                   />
-                  <HeaderSubsection className="mt-6 text-base font-medium text-gray-900">
+                  <Heading level="h3" className="mt-6 text-base font-medium text-gray-900">
                     {policy.name}
-                  </HeaderSubsection>
-                  <Paragraph className="mt-3 text-base text-gray-500">
+                  </Heading>
+                  <p className="mt-3 text-base text-gray-500">
                     {policy.description}
-                  </Paragraph>
+                  </p>
                 </div>
               ))}
             </div>
@@ -393,12 +387,13 @@ export default function Example() {
         <Section ariaLabelledby="reviews-heading" className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
             <div className="lg:col-span-4">
-              <HeaderSection
+              <Heading
+                level="h2"
                 id="reviews-heading"
                 className="text-2xl font-bold tracking-tight text-gray-900"
               >
                 Customer Reviews
-              </HeaderSection>
+              </Heading>
 
               <div className="mt-3 flex items-center">
                 <div>
@@ -416,19 +411,19 @@ export default function Example() {
                       />
                     ))}
                   </div>
-                  <Paragraph className="sr-only">
+                  <p className="sr-only">
                     {reviews.average} out of 5 stars
-                  </Paragraph>
+                  </p>
                 </div>
-                <Paragraph className="ml-2 text-sm text-gray-900">
+                <p className="ml-2 text-sm text-gray-900">
                   Based on {reviews.totalCount} reviews
-                </Paragraph>
+                </p>
               </div>
 
               <div className="mt-6">
-                <HeaderSubsection className="sr-only">
+                <Heading level="h3" className="sr-only">
                   Review data
-                </HeaderSubsection>
+                </Heading>
 
                 <dl className="space-y-3">
                   {reviews.counts.map((count) => (
@@ -437,10 +432,10 @@ export default function Example() {
                       className="flex items-center text-sm"
                     >
                       <dt className="flex flex-1 items-center">
-                        <Paragraph className="w-3 font-medium text-gray-900">
+                        <p className="w-3 font-medium text-gray-900">
                           {count.rating}
                           <span className="sr-only"> star reviews</span>
-                        </Paragraph>
+                        </p>
                         <div
                           aria-hidden="true"
                           className="ml-1 flex flex-1 items-center"
@@ -477,13 +472,13 @@ export default function Example() {
               </div>
 
               <div className="mt-10">
-                <HeaderSubsection className="text-lg font-medium text-gray-900">
+                <Heading level="h3" className="text-lg font-medium text-gray-900">
                   Share your thoughts
-                </HeaderSubsection>
-                <Paragraph className="mt-1 text-sm text-gray-600">
+                </Heading>
+                <p className="mt-1 text-sm text-gray-600">
                   If you’ve used this product, share your thoughts with other
                   customers
-                </Paragraph>
+                </p>
 
                 <ButtonLink
                   to="#"
@@ -495,9 +490,9 @@ export default function Example() {
             </div>
 
             <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
-              <HeaderSubsection className="sr-only">
+              <Heading level="h3" className="sr-only">
                 Recent reviews
-              </HeaderSubsection>
+              </Heading>
 
               <div className="flow-root">
                 <div className="-my-12 divide-y divide-gray-200">
@@ -510,9 +505,9 @@ export default function Example() {
                           className="h-12 w-12 rounded-full"
                         />
                         <div className="ml-4">
-                          <HeaderDetail className="text-sm font-bold text-gray-900">
+                          <Heading level="h4" className="text-sm font-bold text-gray-900">
                             {review.author}
-                          </HeaderDetail>
+                          </Heading>
                           <div className="mt-1 flex items-center">
                             {[0, 1, 2, 3, 4].map((rating) => (
                               <StarIcon
@@ -527,9 +522,9 @@ export default function Example() {
                               />
                             ))}
                           </div>
-                          <Paragraph className="sr-only">
+                          <p className="sr-only">
                             {review.rating} out of 5 stars
-                          </Paragraph>
+                          </p>
                         </div>
                       </div>
 
