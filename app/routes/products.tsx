@@ -11,10 +11,11 @@ import { cn } from "~/lib/utils";
 import Button from "../components/Button";
 import CardContainer from "~/components/products/CardContainer";
 import Img from "~/components/products/Img";
-import ButtonLink from "~/components/ButtonLink";
+import { Link } from "@remix-run/react";
 import Form from "~/components/Form";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
+
 
 
 
@@ -107,12 +108,12 @@ export default function Example() {
                   {product.breadcrumbs.map((breadcrumb, breadcrumbIdx) => (
                     <li key={breadcrumb.id}>
                       <div className="flex items-center text-sm">
-                        <a
-                          href={breadcrumb.href}
+                        <Link
+                          to={breadcrumb.href}
                           className="font-medium text-gray-500 hover:text-gray-900"
                         >
                           {breadcrumb.name}
-                        </a>
+                        </Link>
                         {breadcrumbIdx !== product.breadcrumbs.length - 1 ? (
                           <svg
                             viewBox="0 0 20 20"
@@ -269,7 +270,7 @@ export default function Example() {
                     </RadioGroup>
                   </div>
                   <div className="mt-4">
-                    <ButtonLink
+                    <Link
                       to="#"
                       className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                     >
@@ -278,7 +279,7 @@ export default function Example() {
                         className="ml-2 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
                       />
-                    </ButtonLink>
+                    </Link>
                   </div>
                   <div className="mt-10">
                     <Button
@@ -288,7 +289,7 @@ export default function Example() {
                     />
                   </div>
                   <div className="mt-6 text-center">
-                    <ButtonLink
+                    <Link
                       to="#"
                       className="group inline-flex text-base font-medium"
                     >
@@ -299,7 +300,7 @@ export default function Example() {
                       <span className="text-gray-500 hover:text-gray-700">
                         Lifetime Guarantee
                       </span>
-                    </ButtonLink>
+                    </Link>
                   </div>
                 </Form>
               </Section>
@@ -480,12 +481,12 @@ export default function Example() {
                   customers
                 </p>
 
-                <ButtonLink
+                <Link
                   to="#"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 sm:w-auto lg:w-full"
                 >
                   Write a review
-                </ButtonLink>
+                </Link>
               </div>
             </div>
 
