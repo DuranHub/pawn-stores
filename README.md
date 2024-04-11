@@ -1,38 +1,84 @@
-# Welcome to Remix!
+# Pawn Store Ecommerce
 
-- [Remix Docs](https://remix.run/docs)
+## Requirements
 
-## Development
+- Node.js LTS
+- npm
+- Currently it has a SQLite database, so no need to install any database software.
+- Git
 
-From your terminal:
+## Tech Stack
 
-```sh
+- Prisma ORM [https://www.prisma.io/]
+- Remix [https://remix.run/]
+  - React
+- Tailwind CSS [https://tailwindcss.com/]
+- SQLite
+- TypeScript
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create the database
+
+```bash
+npx prisma db push
+```
+
+4. Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+5. Start the development server
+
+```bash
 npm run dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+6. Open the browser and navigate to `http://localhost:3000`
 
-## Deployment
+## How To
 
-First, build your app for production:
+### Update Database Schema
 
-```sh
-npm run build
+1. Update the schema in `prisma/schema.prisma`
+2. Run the following command to push the changes to the database
+   This can wipe out the data in the database, but it's okay for development and early stages of the project. Further we can use migrations.
+
+```bash
+npx prisma db push
 ```
 
-Then run the app in production mode:
+3. Generate Prisma Client
 
-```sh
-npm start
+```bash
+npx prisma generate
 ```
 
-Now you'll need to pick a host to deploy it to.
+After pushing the changes to the database, you can check the database using a SQLite client. The database file is located at `prisma/dev.db`.
 
-### DIY
+## How to Contribute
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Push the changes to your fork
+5. Create a pull request
+6. Write a detailed description of the changes you made
+   Where possible, provide screenshots or gifs to demonstrate the changes you made, especially for UI changes.
+7. Wait for the review
+8. Once the changes are approved, they will be merged into the main branch
+9. That's it!
