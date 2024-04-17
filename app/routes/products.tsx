@@ -7,6 +7,7 @@ import {
   StarIcon,
 } from "@heroicons/react/20/solid";
 import { cn } from "~/lib/utils";
+import Heading from '~/components/Heading'
 
 const product = {
   name: "Everyday Ruck Snack",
@@ -120,15 +121,15 @@ export default function Example() {
               </nav>
 
               <div className="mt-4">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <Heading level="h1" className="font-bold tracking-tight text-gray-900 sm:text-4xl">
                   {product.name}
-                </h1>
+                </Heading>
               </div>
 
               <section aria-labelledby="information-heading" className="mt-4">
-                <h2 id="information-heading" className="sr-only">
+                <Heading level="h2" id="information-heading" className="sr-only">
                   Product information
-                </h2>
+                </Heading>
 
                 <div className="flex items-center">
                   <p className="text-lg text-gray-900 sm:text-xl">
@@ -136,7 +137,7 @@ export default function Example() {
                   </p>
 
                   <div className="ml-4 border-l border-gray-300 pl-4">
-                    <h2 className="sr-only">Reviews</h2>
+                    <Heading level="h2" className="sr-only">Reviews</Heading>
                     <div className="flex items-center">
                       <div>
                         <div className="flex items-center">
@@ -196,9 +197,9 @@ export default function Example() {
             {/* Product form */}
             <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
               <section aria-labelledby="options-heading">
-                <h2 id="options-heading" className="sr-only">
+                <Heading level="h2" id="options-heading" className="sr-only">
                   Product options
-                </h2>
+                </Heading>
 
                 <form>
                   <div className="sm:flex sm:justify-between">
@@ -295,12 +296,12 @@ export default function Example() {
           {/* Details section */}
           <section aria-labelledby="details-heading">
             <div className="flex flex-col items-center text-center">
-              <h2
+              <Heading level="h2"
                 id="details-heading"
-                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+                className="font-bold tracking-tight text-gray-900 sm:text-4xl"
               >
                 The Fine Details
-              </h2>
+              </Heading>
               <p className="mt-3 max-w-3xl text-lg text-gray-600">
                 Our patented padded snack sleeve construction protects your
                 favorite treats from getting smooshed during all-day adventures,
@@ -343,16 +344,16 @@ export default function Example() {
 
           {/* Policies section */}
           <section aria-labelledby="policy-heading" className="mt-16 lg:mt-24">
-            <h2 id="policy-heading" className="sr-only">
+            <Heading level="h2" id="policy-heading" className="sr-only">
               Our policies
-            </h2>
+            </Heading>
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
               {policies.map((policy) => (
                 <div key={policy.name}>
                   <img src={policy.imageSrc} alt="" className="h-24 w-auto" />
-                  <h3 className="mt-6 text-base font-medium text-gray-900">
+                  <Heading level="h3" className="mt-6 font-medium text-gray-900">
                     {policy.name}
-                  </h3>
+                  </Heading>
                   <p className="mt-3 text-base text-gray-500">
                     {policy.description}
                   </p>
@@ -365,12 +366,13 @@ export default function Example() {
         <section aria-labelledby="reviews-heading" className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
             <div className="lg:col-span-4">
-              <h2
+              <Heading
+                level="h2"
                 id="reviews-heading"
-                className="text-2xl font-bold tracking-tight text-gray-900"
+                className="font-bold tracking-tight text-gray-900"
               >
                 Customer Reviews
-              </h2>
+              </Heading>
 
               <div className="mt-3 flex items-center">
                 <div>
@@ -396,7 +398,7 @@ export default function Example() {
               </div>
 
               <div className="mt-6">
-                <h3 className="sr-only">Review data</h3>
+                <Heading level="h3" className="sr-only">Review data</Heading>
 
                 <dl className="space-y-3">
                   {reviews.counts.map((count) => (
@@ -445,9 +447,9 @@ export default function Example() {
               </div>
 
               <div className="mt-10">
-                <h3 className="text-lg font-medium text-gray-900">
+                <Heading level="h3" className="font-medium text-gray-900">
                   Share your thoughts
-                </h3>
+                </Heading>
                 <p className="mt-1 text-sm text-gray-600">
                   If you’ve used this product, share your thoughts with other
                   customers
@@ -463,7 +465,7 @@ export default function Example() {
             </div>
 
             <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
-              <h3 className="sr-only">Recent reviews</h3>
+              <Heading level="h3" className="sr-only">Recent reviews</Heading>
 
               <div className="flow-root">
                 <div className="-my-12 divide-y divide-gray-200">
@@ -476,9 +478,9 @@ export default function Example() {
                           className="h-12 w-12 rounded-full"
                         />
                         <div className="ml-4">
-                          <h4 className="text-sm font-bold text-gray-900">
+                          <Heading level="h4" className="font-bold text-gray-900">
                             {review.author}
-                          </h4>
+                          </Heading>
                           <div className="mt-1 flex items-center">
                             {[0, 1, 2, 3, 4].map((rating) => (
                               <StarIcon
