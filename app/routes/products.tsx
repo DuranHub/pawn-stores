@@ -2,7 +2,6 @@ import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import {
-  CheckIcon,
   QuestionMarkCircleIcon,
   StarIcon,
 } from "@heroicons/react/20/solid";
@@ -10,6 +9,7 @@ import { cn } from "~/lib/utils";
 import Heading from '~/components/Heading'
 import { Link } from "@remix-run/react";
 import ShipStatus from "~/components/ShipStatus";
+import TooltipInfo from "~/components/TooltipInfo";
 
 
 const product = {
@@ -254,11 +254,7 @@ export default function Example() {
                       to="#"
                       className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                     >
-                      <span>What size should I buy?</span>
-                      <QuestionMarkCircleIcon
-                        className="ml-2 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
+                      <TooltipInfo text="What size should I buy?" infoTexto="Ayuda D:"/>
                     </Link>
                   </div>
                   <div className="mt-10">
