@@ -1,13 +1,90 @@
-datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
-model Post {
-    id   String @id @default(cuid())
-    name String
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String
+  password String
+  sales    Sales[]
+  Admin    Admin?
+}
+
+model Admin {
+  id        Int    @id @default(autoincrement())
+  userAdmin String @unique
+  //nombre  modeloRef           columnaAdminRef          ref
+  admin     User   @relation(fields: [userAdmin], references: [id])
+  branch    Store?
+}
+
+model Products {
+  id              Int        @id @default(autoincrement())
+  name            String
+  description     String
+  productCategory Int
+  category        Categories @relation(fields: [productCategory], references: [id])
+  salesProduct    Sales[]
+}
+
+model Categories {
+  id       Int        @id @default(autoincrement())
+  category String
+  Products Products[]
+}
+
+model bank {
+  id         Int    @id @default(autoincrement())
+  numAccount Int    @unique
+  holder     String
+  branchBank Int
+  bankB      Store  @relation(fields: [branchBank], references: [id])
+}
+
+model Store {
+  id          Int    @id @default(autoincrement())
+  location    String
+  name        String
+  bank        bank[]
+  adminBranch Int    @unique
+  branchAdmin Admin  @relation(fields: [adminBranch], references: [id])
+  salesBranch Int
+  branchSales Sales  @relation(fields: [salesBranch], references: [id])
+}
+
+model PaymentMethod {
+  id     String  @id @default(cuid())
+  method String
+  sales  Sales[]
+}
+
+//una venta puede tener un id unico. 
+//uno a muchos: una venta es de una sola suc. pero una suc, puede tener muchas ventas
+//uno a muchos: una venta tiene un solo cliente, pero un cliente puede hacer varias compras. 
+//uno a muchos: una venta puede tener muchos productos, pero un producto solo estará en una sola venta
+//uno a uno: una venta tiene un solo canal de pago, un pago está relacionado a una sola venta
+
+model Sales {
+  id              Int           @id @default(autoincrement())
+  store           Store[] //
+  date            DateTime
+  Customer        User          @relation(fields: [userId], references: [id])
+  Products        Products[] //
+  payment         PaymentMethod @relation(fields: [paymentMethodId], references: [id])
+  total           Int
+  paymentMethodId String
+  userId          String
 }
