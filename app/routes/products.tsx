@@ -2,11 +2,15 @@ import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import {
-  CheckIcon,
   QuestionMarkCircleIcon,
   StarIcon,
 } from "@heroicons/react/20/solid";
 import { cn } from "~/lib/utils";
+import Heading from '~/components/Heading'
+import { Link } from "@remix-run/react";
+import ShipStatus from "~/components/ShipStatus";
+import TooltipInfo from "~/components/TooltipInfo";
+
 
 const product = {
   name: "Everyday Ruck Snack",
@@ -97,12 +101,12 @@ export default function Example() {
                   {product.breadcrumbs.map((breadcrumb, breadcrumbIdx) => (
                     <li key={breadcrumb.id}>
                       <div className="flex items-center text-sm">
-                        <a
-                          href={breadcrumb.href}
+                        <Link
+                          to={breadcrumb.href}
                           className="font-medium text-gray-500 hover:text-gray-900"
                         >
                           {breadcrumb.name}
-                        </a>
+                        </Link>
                         {breadcrumbIdx !== product.breadcrumbs.length - 1 ? (
                           <svg
                             viewBox="0 0 20 20"
@@ -120,15 +124,15 @@ export default function Example() {
               </nav>
 
               <div className="mt-4">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <Heading level="h1" className="font-bold tracking-tight text-gray-900 sm:text-4xl">
                   {product.name}
-                </h1>
+                </Heading>
               </div>
 
               <section aria-labelledby="information-heading" className="mt-4">
-                <h2 id="information-heading" className="sr-only">
+                <Heading level="h2" id="information-heading" className="sr-only">
                   Product information
-                </h2>
+                </Heading>
 
                 <div className="flex items-center">
                   <p className="text-lg text-gray-900 sm:text-xl">
@@ -136,7 +140,7 @@ export default function Example() {
                   </p>
 
                   <div className="ml-4 border-l border-gray-300 pl-4">
-                    <h2 className="sr-only">Reviews</h2>
+                    <Heading level="h2" className="sr-only">Reviews</Heading>
                     <div className="flex items-center">
                       <div>
                         <div className="flex items-center">
@@ -171,13 +175,7 @@ export default function Example() {
                 </div>
 
                 <div className="mt-6 flex items-center">
-                  <CheckIcon
-                    className="h-5 w-5 flex-shrink-0 text-green-500"
-                    aria-hidden="true"
-                  />
-                  <p className="ml-2 text-sm text-gray-500">
-                    In stock and ready to ship
-                  </p>
+                  <ShipStatus statusText="In stock and ready to ship" />
                 </div>
               </section>
             </div>
@@ -196,9 +194,9 @@ export default function Example() {
             {/* Product form */}
             <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
               <section aria-labelledby="options-heading">
-                <h2 id="options-heading" className="sr-only">
+                <Heading level="h2" id="options-heading" className="sr-only">
                   Product options
-                </h2>
+                </Heading>
 
                 <form>
                   <div className="sm:flex sm:justify-between">
@@ -252,16 +250,12 @@ export default function Example() {
                     </RadioGroup>
                   </div>
                   <div className="mt-4">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                     >
-                      <span>What size should I buy?</span>
-                      <QuestionMarkCircleIcon
-                        className="ml-2 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                    </a>
+                      <TooltipInfo text="What size should I buy?" infoTexto="Ayuda D:"/>
+                    </Link>
                   </div>
                   <div className="mt-10">
                     <button
@@ -272,8 +266,8 @@ export default function Example() {
                     </button>
                   </div>
                   <div className="mt-6 text-center">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="group inline-flex text-base font-medium"
                     >
                       <ShieldCheckIcon
@@ -283,7 +277,7 @@ export default function Example() {
                       <span className="text-gray-500 hover:text-gray-700">
                         Lifetime Guarantee
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </form>
               </section>
@@ -295,12 +289,12 @@ export default function Example() {
           {/* Details section */}
           <section aria-labelledby="details-heading">
             <div className="flex flex-col items-center text-center">
-              <h2
+              <Heading level="h2"
                 id="details-heading"
-                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+                className="font-bold tracking-tight text-gray-900 sm:text-4xl"
               >
                 The Fine Details
-              </h2>
+              </Heading>
               <p className="mt-3 max-w-3xl text-lg text-gray-600">
                 Our patented padded snack sleeve construction protects your
                 favorite treats from getting smooshed during all-day adventures,
@@ -343,16 +337,16 @@ export default function Example() {
 
           {/* Policies section */}
           <section aria-labelledby="policy-heading" className="mt-16 lg:mt-24">
-            <h2 id="policy-heading" className="sr-only">
+            <Heading level="h2" id="policy-heading" className="sr-only">
               Our policies
-            </h2>
+            </Heading>
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
               {policies.map((policy) => (
                 <div key={policy.name}>
                   <img src={policy.imageSrc} alt="" className="h-24 w-auto" />
-                  <h3 className="mt-6 text-base font-medium text-gray-900">
+                  <Heading level="h3" className="mt-6 font-medium text-gray-900">
                     {policy.name}
-                  </h3>
+                  </Heading>
                   <p className="mt-3 text-base text-gray-500">
                     {policy.description}
                   </p>
@@ -365,12 +359,13 @@ export default function Example() {
         <section aria-labelledby="reviews-heading" className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
             <div className="lg:col-span-4">
-              <h2
+              <Heading
+                level="h2"
                 id="reviews-heading"
-                className="text-2xl font-bold tracking-tight text-gray-900"
+                className="font-bold tracking-tight text-gray-900"
               >
                 Customer Reviews
-              </h2>
+              </Heading>
 
               <div className="mt-3 flex items-center">
                 <div>
@@ -396,7 +391,7 @@ export default function Example() {
               </div>
 
               <div className="mt-6">
-                <h3 className="sr-only">Review data</h3>
+                <Heading level="h3" className="sr-only">Review data</Heading>
 
                 <dl className="space-y-3">
                   {reviews.counts.map((count) => (
@@ -445,25 +440,25 @@ export default function Example() {
               </div>
 
               <div className="mt-10">
-                <h3 className="text-lg font-medium text-gray-900">
+                <Heading level="h3" className="font-medium text-gray-900">
                   Share your thoughts
-                </h3>
+                </Heading>
                 <p className="mt-1 text-sm text-gray-600">
                   If you’ve used this product, share your thoughts with other
                   customers
                 </p>
 
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 sm:w-auto lg:w-full"
                 >
                   Write a review
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0">
-              <h3 className="sr-only">Recent reviews</h3>
+              <Heading level="h3" className="sr-only">Recent reviews</Heading>
 
               <div className="flow-root">
                 <div className="-my-12 divide-y divide-gray-200">
@@ -476,9 +471,9 @@ export default function Example() {
                           className="h-12 w-12 rounded-full"
                         />
                         <div className="ml-4">
-                          <h4 className="text-sm font-bold text-gray-900">
+                          <Heading level="h4" className="font-bold text-gray-900">
                             {review.author}
-                          </h4>
+                          </Heading>
                           <div className="mt-1 flex items-center">
                             {[0, 1, 2, 3, 4].map((rating) => (
                               <StarIcon
